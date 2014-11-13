@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Player Controls</name>
+    <events>
+        <variable constant="0" name="g_iExtendedView" sid="2401043812925683" static="0" type="number">300</variable>
+        <variable constant="0" name="g_CameraX" sid="4640476959176844" static="0" type="number">0</variable>
+        <variable constant="0" name="g_CameraY" sid="4320383842330524" static="0" type="number">0</variable>
+        <variable constant="0" name="g_iLerpAmount" sid="2951141629348237" static="0" type="number">0</variable>
+        <variable constant="0" name="g_iLerpSpeed" sid="5503671486630633" static="0" type="number">2</variable>
+        <comment>If the robot is not being controlled OR using Extended View</comment>
+        <event-block sid="2735341470536005">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="6870473787771864" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iRobotControl</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="3448243999054963" type="System">
+                    <param id="0" name="Variable">g_iLerpAmount</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Look Left</comment>
+                <event-block sid="1844489590922104">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="2195726931128797" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="7578259208184617">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8205744550089945" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9510930688990705" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bClimbing</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="4701577178574612" type="spr_PlayerAnimations">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="6160718183138814" type="spr_PlayerAnimations">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1932112868405106">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="672903673010536" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                                <condition id="7" inverted="1" name="Is mirrored" sid="9023660713345108" type="spr_PlayerAnimations" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="7047530219199914" type="spr_PlayerAnimations">
+                                    <param id="0" name="Animation">&quot;Fall&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="1636327827436794" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="4446524481209142" type="spr_PlayerAnimations">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Look Right</comment>
+                <event-block sid="7122752528795999">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="5951514308218514" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6058376380821004">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8096427609643291" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="7411821559588609" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bClimbing</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="8842068858358883" type="spr_PlayerAnimations">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="2314827820977185" type="spr_PlayerAnimations">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1415163681940524">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="4228293238362573" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                                <condition id="7" name="Is mirrored" sid="1576696504348951" type="spr_PlayerAnimations" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="2102749458692213" type="spr_PlayerAnimations">
+                                    <param id="0" name="Animation">&quot;Fall&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="4484460242047842" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="6104722969929876" type="spr_PlayerAnimations">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="6153257119747382">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="1980549804062419" type="Keyboard">
+                            <param id="0" name="Key">87 (W)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Jump</comment>
+                        <event-block sid="9840999982120176">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="6368588440616006" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bSneaking</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="564209541450535" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bCrawling</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5692195041007238" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="1889560809669429" type="spr_PlayerAnimations">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Climb</comment>
+                        <event-block sid="8486116997988423">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="7066596789222921" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="7119620927952827" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bClimbing</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="9798358675719814" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="9426397512643724">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="6694710081964103" type="Keyboard">
+                            <param id="0" name="Key">83 (S)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Start crawling</comment>
+                        <event-block sid="8107578704023539">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3216465492542397" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3435188790546273" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bClimbing</param>
+                                </condition>
+                                <condition behavior="Platform" id="4" inverted="1" name="Is falling" sid="2525801333994934" type="spr_PlayerAnimations" />
+                                <condition behavior="Platform" id="3" inverted="1" name="Is jumping" sid="3478605109695707" type="spr_PlayerAnimations" />
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="2041353125903675" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bCrawling</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Drop from ledge</comment>
+                        <event-block sid="9938106355559431">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="171324994072407" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="5561494560732446" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bHanging</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Start sneaking</comment>
+                <event-block sid="756579445448722">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="8937850108910565" type="Keyboard">
+                            <param id="0" name="Key">16 (Shift)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="2136259463132817" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bSneaking</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Stop crawling</comment>
+                <event-block sid="3989512997394753">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Key is down" sid="1097806187856184" type="Keyboard">
+                            <param id="0" name="Key">83 (S)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="8538055534122246">
+                            <conditions>
+                                <condition id="1" inverted="1" name="Is overlapping another object" sid="9471780038827542" type="inv_CrawlCheck">
+                                    <param id="0" name="Object">obj_Flooring</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="2239348046467813" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">bCrawling</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Stop sneaking</comment>
+                <event-block sid="9888804470882577">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="2926801010636484" type="Keyboard">
+                            <param id="0" name="Key">16 (Shift)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="5044937626309886" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bSneaking</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Hanging, stop platform input</comment>
+                <event-block sid="786670368081208">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="5784712215228923" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bHanging</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="8" name="Set vector X" sid="681599670194858" type="spr_PlayerAnimations">
+                            <param id="0" name="Vector X">0</param>
+                        </action>
+                        <action behavior="Platform" id="9" name="Set vector Y" sid="2807574781109357" type="spr_PlayerAnimations">
+                            <param id="0" name="Vector Y">0</param>
+                        </action>
+                        <action behavior="Platform" id="11" name="Set enabled" sid="9743863716247622" type="spr_PlayerAnimations">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Climbing, stop platform input</comment>
+                <event-block sid="1180626192759208">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="4107417812971365" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bClimbing</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="11" name="Set enabled" sid="2223373012086248" type="spr_PlayerAnimations">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action behavior="Platform" id="0" name="Set ignoring input" sid="4804447481575592" type="spr_PlayerAnimations">
+                            <param id="0" name="Input">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Resume normal user inputs</comment>
+                <event-block sid="4649056622697118">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9652015009867006" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bHanging</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="7644896541410713" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bClimbing</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="11" name="Set enabled" sid="3276856403726103" type="spr_PlayerAnimations">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action behavior="Platform" id="0" name="Set ignoring input" sid="4469928019209454" type="spr_PlayerAnimations">
+                            <param id="0" name="Input">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Start Extending View left</comment>
+        <event-block sid="5334309260852135">
+            <conditions>
+                <condition id="2" name="Key is down" sid="7470479260476383" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="2174102723409882">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9008264968829681" type="System">
+                            <param id="0" name="Variable">g_CameraX</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">spr_PlayerAnimations.X</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="2110645654424985" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="7894041916491218" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewLeft</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Start Extending View right</comment>
+        <event-block sid="5416991316601206">
+            <conditions>
+                <condition id="2" name="Key is down" sid="8085757294091315" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="8201250174556156">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5441098497251175" type="System">
+                            <param id="0" name="Variable">g_CameraX</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">spr_PlayerAnimations.X</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="5190939600992007" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="3205796012010324" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewRight</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Start Extending View up</comment>
+        <event-block sid="4279556968626096">
+            <conditions>
+                <condition id="2" name="Key is down" sid="2714451329404763" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="1222768430838157">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5059549770048205" type="System">
+                            <param id="0" name="Variable">g_CameraY</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">spr_PlayerAnimations.Y</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="8007180206538578" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="4954026605263492" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewUp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Start Extending View down</comment>
+        <event-block sid="8976264479021166">
+            <conditions>
+                <condition id="2" name="Key is down" sid="2151065161293928" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="6391073767157092">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2851825029714269" type="System">
+                            <param id="0" name="Variable">g_CameraY</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">spr_PlayerAnimations.Y</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="4395970648222523" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="7769319382899325" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewDown</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Stop Extended View</comment>
+        <event-block sid="1771843453478818">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="1947243202208717" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="8936375091014721" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewLeft</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9611043881292108">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="6966838722001015" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="8968676839822267" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewRight</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5915531591209402">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="396449623797783" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="6064144786851349" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewUp</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1631433801215587">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="7238129945047928" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="3903887204561393" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewDown</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Scroll back tot the player</comment>
+        <event-block sid="5442396474533166">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5369148806838361" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewLeft</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="7729803438385136" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewRight</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="7775408260565105" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewUp</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5707518574464246" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewDown</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="2054931472021484">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1979665777266493" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="ScrollTo" id="1" name="Set enabled" sid="4593253572917621" type="spr_PlayerAnimations">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="1876317090656894" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Value">g_iLerpSpeed * dt</param>
+                        </action>
+                        <action id="-7" name="Scroll to position" sid="8548790573231487" type="System">
+                            <param id="0" name="X">lerp( spr_PlayerAnimations.X, g_CameraX, g_iLerpAmount)</param>
+                            <param id="1" name="Y">lerp(spr_PlayerAnimations.Y,  g_CameraY, g_iLerpAmount)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7493949270786528">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4686946436020579" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="800007065860632" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action behavior="ScrollTo" id="1" name="Set enabled" sid="2157053136213497" type="spr_PlayerAnimations">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Scroll in direction of extended view</comment>
+        <event-block any="1" sid="9117135040176804">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="7125237585426303" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewLeft</param>
+                </condition>
+                <condition id="-8" name="Is boolean instance variable set" sid="4182078954743518" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewRight</param>
+                </condition>
+                <condition id="-8" name="Is boolean instance variable set" sid="9894381289701837" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewUp</param>
+                </condition>
+                <condition id="-8" name="Is boolean instance variable set" sid="734892336881537" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bExtendViewDown</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="275448578502894" type="spr_PlayerAnimations">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="2041641141775403" type="System">
+                    <param id="0" name="Variable">g_CameraX</param>
+                    <param id="1" name="Value">scrollx</param>
+                </action>
+                <action id="-9" name="Set value" sid="4367013240025295" type="System">
+                    <param id="0" name="Variable">g_CameraY</param>
+                    <param id="1" name="Value">scrolly</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="4798442193359158">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="7772606522146401" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="1708658858488231" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Value">g_iLerpSpeed * dt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5670048855179541">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5059284543859624" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="3751829131496586" type="System">
+                            <param id="0" name="Variable">g_iLerpAmount</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8141240083989679">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="5328221721071081" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewLeft</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-5" name="Scroll to X" sid="4585667021478213" type="System">
+                            <param id="0" name="X">lerp(spr_PlayerAnimations.X, spr_PlayerAnimations.X - g_iExtendedView, g_iLerpAmount)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1453048280120115">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="8087186267303604" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewRight</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-5" name="Scroll to X" sid="5447873763252204" type="System">
+                            <param id="0" name="X">lerp(spr_PlayerAnimations.X, spr_PlayerAnimations.X + g_iExtendedView, g_iLerpAmount)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3178532005852753">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="1578748520398316" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewUp</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-6" name="Scroll to Y" sid="5915056710575867" type="System">
+                            <param id="0" name="Y">lerp(spr_PlayerAnimations.Y, spr_PlayerAnimations.Y - g_iExtendedView, g_iLerpAmount)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3046829564104342">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="8158195527013978" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bExtendViewDown</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-6" name="Scroll to Y" sid="3273490174451421" type="System">
+                            <param id="0" name="Y">lerp(spr_PlayerAnimations.Y, spr_PlayerAnimations.Y + g_iExtendedView, g_iLerpAmount)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

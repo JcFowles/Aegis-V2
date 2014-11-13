@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Main</name>
+    <events>
+        <include>Camera</include>
+        <include>Nick Buttons</include>
+        <include>LevelSwap</include>
+        <include>Robot AI</include>
+        <include>Player Animations</include>
+        <include>Player Controls</include>
+        <event-block sid="3213635243289849">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="2140802181832507" type="System" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="-4" name="Set position to another object" sid="9633506120039557" type="spr_PlayerAnimations">
+                    <param id="0" name="Object">spr_Player</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="7906343703662091" type="spr_Cam">
+                    <param id="0" name="X">121</param>
+                    <param id="1" name="Y">68</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block any="1" sid="906995327388971">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="1203169502256426" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Jump&quot;</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="7737625948617577" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Fall&quot;</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="1571841494139144" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Hang&quot;</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="103558939819105" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Climb&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="908090472917012" type="inv_GrabZone">
+                            <param id="0" name="Object">spr_PlayerAnimations</param>
+                            <param id="1" name="Image point (optional)">&quot;Ledge Grab&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7093020314713577">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="7666327676309057" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="5981994216030227" type="inv_GrabZone">
+                            <param id="0" name="X">-100</param>
+                            <param id="1" name="Y">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="587197988730013">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="4155535295821518" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">bCrawling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="1358244447095268" type="inv_CrawlCheck">
+                            <param id="0" name="Object">spr_PlayerAnimations</param>
+                            <param id="1" name="Image point (optional)">&quot;Crawl Checker&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6808023590544617">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="1811981377521888" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="2882381303292198" type="inv_CrawlCheck">
+                            <param id="0" name="X">-100</param>
+                            <param id="1" name="Y">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4740424552095967">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="8725885355224611" type="System">
+                    <param id="0" name="Variable">puzzle1complete</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7084084756092804" type="door_closed" />
+                <action id="11" name="Set collisions enabled" sid="7412948693480297" type="obj_blocker">
+                    <param id="0" name="Collisions">0</param>
+                </action>
+                <action behavior="Solid" id="0" name="Set enabled" sid="4804989293250681" type="obj_blocker">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2090030124400771">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="7690075414273169" type="Keyboard">
+                    <param id="0" name="Key">69 (E)</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="848325376039209" type="spr_Player">
+                    <param id="0" name="Object">ButtonBox</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="7965073643390829" type="System">
+                    <param id="0" name="Layout">Nickpuzzle</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

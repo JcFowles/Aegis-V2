@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Camera</name>
+    <events>
+        <event-block sid="1001671288470841">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="8445107104723421" type="Keyboard">
+                    <param id="0" name="Key">69 (E)</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="2396500526515764" type="inv_CameraConsol">
+                    <param id="0" name="Object">spr_Player</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="6480363776983732">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="3542249818124272" type="spr_Cam">
+                            <param id="0" name="Instance variable">Camera_On</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="8889888703496853" type="spr_Cam">
+                            <param id="0" name="Instance variable">Camera_On</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="1019586318053055" type="console_camera">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9381435651432054">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="3703598489672387" type="System" />
+                        <condition id="-7" name="Compare instance variable" sid="6194628472683706" type="spr_Cam">
+                            <param id="0" name="Instance variable">Camera_On</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="5472064046426306" type="spr_Cam">
+                            <param id="0" name="Instance variable">Camera_On</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="2419784482232691" type="console_camera">
+                            <param id="0" name="Animation">&quot;Off&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4841898478527632">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="6216849752925403" type="spr_Cam">
+                    <param id="0" name="Instance variable">Camera_On</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="163699639934767" type="spr_Cam">
+                    <param id="0" name="Animation">&quot;On&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="3486378066744581">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="9485468914007916" type="inv_Camera_sight">
+                            <param id="0" name="Object">spr_Player</param>
+                        </condition>
+                        <condition id="-2" inverted="1" name="Compare Y" sid="1180601659918433" type="spr_Turret">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Y co-ordinate">771</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="3533492599599859" type="spr_Turret">
+                            <param id="0" name="X">spr_Turret.X</param>
+                            <param id="1" name="Y">spr_Turret.Y - 1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4633416583907394">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="9682254883772358" type="spr_Turret">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Y co-ordinate">771</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="1149285120104727" type="spr_Turret">
+                            <param id="0" name="Animation">&quot;left&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2217149626235359">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="585472964482211" type="spr_Turret">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">6</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="3335929361216948">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="1522605149468918" type="System">
+                                    <param id="0" name="Interval (seconds)">1.0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="7503568696022606" type="spr_Turret">
+                                    <param id="0" name="Object">spr_Bullet</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="Image point">&quot;Bullet&quot;</param>
+                                </action>
+                                <action id="-22" name="Set angle toward position" sid="9216503774399401" type="spr_Bullet">
+                                    <param id="0" name="X">spr_Turret.ImagePointX(&quot;TurretAim&quot;)</param>
+                                    <param id="1" name="Y">spr_Bullet.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6490840233458672">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="4753697325025351" type="spr_Cam">
+                    <param id="0" name="Instance variable">Camera_On</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="3128412761230143" type="spr_Cam">
+                    <param id="0" name="Animation">&quot;Off&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="8781115235999504" type="spr_Cam">
+                    <param id="0" name="X">121</param>
+                    <param id="1" name="Y">68</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1328028087301063">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="6605898039990798" type="spr_Bullet" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1081774032142079" type="spr_Bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="3562746694818184">
+            <conditions>
+                <condition id="1" inverted="1" name="Is overlapping another object" sid="3602754788128894" type="inv_Camera_sight">
+                    <param id="0" name="Object">spr_Player</param>
+                </condition>
+                <condition id="-2" inverted="1" name="Compare Y" sid="2228921305317317" type="spr_Turret">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Y co-ordinate">615</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="1800397443008508" type="spr_Turret">
+                    <param id="0" name="X">spr_Turret.X</param>
+                    <param id="1" name="Y">spr_Turret.Y + 1</param>
+                </action>
+                <action id="4" name="Set animation" sid="8858410748483629" type="spr_Turret">
+                    <param id="0" name="Animation">&quot;IdleLeft&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
