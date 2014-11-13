@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Robot AI</name>
+    <events>
+        <comment>Patrolling movement</comment>
+        <event-block sid="8228440146875395">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="5747632621286322" type="System" />
+                <condition disabled="1" id="-7" name="Compare instance variable" sid="6215539272309351" type="inv_robot">
+                    <param id="0" name="Instance variable">PlayerControl</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="1868738809341641">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="160118094457008" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="5822314854480695" type="inv_robot">
+                            <param id="0" name="X">inv_robot.X - inv_robot.speed</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="2411542073720275" type="inv_ShootSight">
+                            <param id="0" name="Object">inv_robot</param>
+                            <param id="1" name="Image point (optional)">&quot;Sight&quot;</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="1877939301399421" type="inv_SoundCheck">
+                            <param id="0" name="Object">inv_robot</param>
+                            <param id="1" name="Image point (optional)">&quot;sound&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7795886437812089">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="6309305272144423" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Foward&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="3282133005395315" type="inv_robot">
+                            <param id="0" name="X">inv_robot.X + inv_robot.speed</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="1497964005342307" type="inv_ShootSight">
+                            <param id="0" name="Object">inv_robot</param>
+                            <param id="1" name="Image point (optional)">&quot;Sight&quot;</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="4352990170554672" type="inv_SoundCheck">
+                            <param id="0" name="Object">inv_robot</param>
+                            <param id="1" name="Image point (optional)">&quot;sound&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3551178095472967">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="4510902285516242" type="inv_robot">
+                            <param id="0" name="Object">inv_RobotLeftPatrol</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="7501787604256588" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="7359610694848866" type="inv_robot">
+                            <param id="0" name="Animation">&quot;ReverseTurn&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="163438719993012">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="7142999261197199" type="inv_robot">
+                            <param id="0" name="Object">inv_RobotLeftPatrol</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="3649530170779225" type="inv_robot">
+                            <param id="0" name="Animation">&quot;ReverseTurn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="481259369222222">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="4621110004041952" type="inv_robot">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">9</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="640567157449125" type="inv_robot">
+                                    <param id="0" name="Animation">&quot;Foward&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="1821440451897813" type="inv_ShootSight">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="1355762697585974" type="inv_SoundCheck">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="8680617693228624">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="8155623600119976" type="inv_robot">
+                            <param id="0" name="Object">inv_RobotRightPatrol</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="2918169436752844" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Foward&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="5781480367296476" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Turn&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3345022867177589">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="392715200808964" type="inv_robot">
+                            <param id="0" name="Object">inv_RobotRightPatrol</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="5773967479702687" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Turn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="5186153353475662">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="9461764698087707" type="inv_robot">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">9</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="2374720666734513" type="inv_robot">
+                                    <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="3588788277497775" type="inv_SoundCheck">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="5408196260118777" type="inv_ShootSight">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>If player is in robot shoot sight fire a bullet</comment>
+        <event-block sid="7738507454216624">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="7597394767172993" type="spr_Player">
+                    <param id="0" name="Object">inv_ShootSight</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="9648733848025022" type="inv_robot">
+                    <param id="0" name="Instance variable">speed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="5551676497294436">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="9753899942279131" type="System">
+                            <param id="0" name="Interval (seconds)">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="5029104804150971" type="inv_robot">
+                            <param id="0" name="Object">spr_Bullet</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">&quot;Imagepoint 1&quot;</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" sid="2792520426248494" type="spr_Bullet">
+                            <param id="0" name="X">inv_ShootSight.ImagePointX(&quot;BulletAim&quot;)</param>
+                            <param id="1" name="Y">spr_Bullet.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="151892703086499">
+                    <conditions>
+                        <condition id="-4" name="Is outside layout" sid="8622170087294504" type="spr_Bullet" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="4300559602605129" type="spr_Bullet" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Player controling Robot</comment>
+        <event-block sid="8245538598360453">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="5532150222846181" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iRobotControl</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="1377471119528877" type="spr_PlayerAnimations">
+                    <param id="0" name="Object">obj_RobotController</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="4532435907512849">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="3847494570574844" type="Keyboard">
+                            <param id="0" name="Key">69 (E)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="6590672229359742" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">iRobotControl</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6700118183695415">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="8366896859364228" type="System" />
+                <condition id="-7" name="Compare instance variable" sid="9858500134396284" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iRobotControl</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="0" name="Set ignoring input" sid="6513958896869078" type="spr_Player">
+                    <param id="0" name="Input">1</param>
+                </action>
+                <action behavior="Platform" id="0" name="Set ignoring input" sid="7040068157466931" type="inv_robot2">
+                    <param id="0" name="Input">0</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="4158270449193609" type="spr_PlayerAnimations">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="4425372144352202" type="inv_robot2">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="706922748534693">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="8699163148925577" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="7775409895220606" type="inv_robot2">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="9933478332548678" type="inv_robot2">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="3658297672428311" type="inv_robot2">
+                            <param id="0" name="Speed">23</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9524671590877567">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="7675992461823356" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="5240039144809797" type="inv_robot2">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="4876049077630225" type="inv_robot2">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="54476744684641" type="inv_robot2">
+                            <param id="0" name="Speed">23</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3549926573127365">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Key is down" sid="1904518980124992" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                        <condition id="2" inverted="1" name="Key is down" sid="12253016593205" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Set speed" sid="1893721278524867" type="inv_robot2">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4011203434057312">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="4879184609225854" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7965981931408425" type="inv_robot2">
+                            <param id="0" name="Object">spr_Bullet</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" sid="2137176516817844" type="spr_Bullet">
+                            <param id="0" name="X">inv_robot.ImagePointX(&quot;aim&quot;)</param>
+                            <param id="1" name="Y">spr_Bullet.Y</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="8358071303782576" type="inv_robot2">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>PLayer no longer controlling Robot</comment>
+        <event-block sid="1678614228772628">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="9350550592608527" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iRobotControl</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="5717424793018524" type="spr_PlayerAnimations">
+                    <param id="0" name="Object">obj_RobotController</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="3199226822577723">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="3194689687334472" type="Keyboard">
+                            <param id="0" name="Key">82 (R)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="7387037046462192" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">iRobotControl</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="5044124303259628" type="inv_robot2">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="5030318871217814">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6568928541906469" type="System" />
+                <condition id="-7" name="Compare instance variable" sid="5273520171036978" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iRobotControl</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="0" name="Set ignoring input" sid="4568428882032703" type="spr_Player">
+                    <param id="0" name="Input">0</param>
+                </action>
+                <action behavior="Platform" id="0" name="Set ignoring input" sid="4467491766040231" type="inv_robot2">
+                    <param id="0" name="Input">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="2271344940687491" type="spr_PlayerAnimations">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action behavior="ScrollTo" id="1" name="Set enabled" sid="8799867746503519" type="inv_robot2">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Noise behind Robot detections, turn around and shoot if player is in sight</comment>
+        <event-block sid="1305318187049234">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="4022410083334079" type="inv_SoundCheck">
+                    <param id="0" name="Object">spr_Player</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="9591117844198505" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iNoiseEmission</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="5691890863924198" type="inv_robot">
+                    <param id="0" name="Instance variable">speed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="7415308925673205">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="3166049888649728" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Foward&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="9412307074906822" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Turn&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2237333338058967">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="4577950422963979" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="8043057345690314" type="inv_robot">
+                            <param id="0" name="Animation">&quot;ReverseTurn&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9548793381655335">
+                    <conditions>
+                        <condition id="3" name="Compare frame" sid="7242712764391436" type="inv_robot">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">9</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="3499988829711788" type="System">
+                            <param id="0" name="Interval (seconds)">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7215377573556224" type="inv_robot">
+                            <param id="0" name="Object">spr_Bullet</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">&quot;Imagepoint 1&quot;</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" sid="819293144349437" type="spr_Bullet">
+                            <param id="0" name="X">inv_robot.ImagePointX(&quot;aim&quot;)</param>
+                            <param id="1" name="Y">spr_Bullet.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5974181400225628">
+                    <conditions>
+                        <condition id="-4" name="Is outside layout" sid="3491373488948224" type="spr_Bullet" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="5892385577022243" type="spr_Bullet" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>conditions for normal partolling</comment>
+        <event-block sid="9649482776801961">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="6871489736494077" type="inv_SoundCheck">
+                    <param id="0" name="Object">spr_Player</param>
+                </condition>
+                <condition id="-7" inverted="1" name="Compare instance variable" sid="3684403292154664" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iNoiseEmission</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="8204663761511062" type="inv_robot">
+                    <param id="0" name="Instance variable">speed</param>
+                    <param id="1" name="Value">5</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="9669290852514842">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="8864171733418869" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Turn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="522221250468006" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Foward&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="323664000372419">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="1660748835932037" type="inv_robot">
+                            <param id="0" name="Animation">&quot;ReversTurn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="2680322163641329" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3170888615760715">
+            <conditions>
+                <condition id="1" inverted="1" name="Is overlapping another object" sid="7502041363686506" type="spr_Player">
+                    <param id="0" name="Object">inv_ShootSight</param>
+                </condition>
+                <condition id="1" inverted="1" name="Is overlapping another object" sid="3760893016947634" type="inv_SoundCheck">
+                    <param id="0" name="Object">spr_Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="5553469466814612" type="inv_robot">
+                    <param id="0" name="Instance variable">speed</param>
+                    <param id="1" name="Value">5</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block disabled="1" sid="9106154695188068">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="3998497723203768" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Turn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="6515647310859288" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Foward&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="3613846264764675">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="8289269390737127" type="inv_robot">
+                            <param id="0" name="Animation">&quot;ReversTurn&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="6252642115533368" type="inv_robot">
+                            <param id="0" name="Animation">&quot;Reverse&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Player Death, atm its just setting the player to start postion again</comment>
+        <event-block sid="8972556905008121">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="1347940289735536" type="spr_Player">
+                    <param id="0" name="Object">spr_Bullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-3" name="Set position" sid="7156153723859374" type="spr_Player">
+                    <param id="0" name="X">1049</param>
+                    <param id="1" name="Y">1117</param>
+                </action>
+                <action disabled="1" id="-3" name="Set position" sid="104095021635718" type="inv_robot">
+                    <param id="0" name="X">1503</param>
+                    <param id="1" name="Y">956</param>
+                </action>
+                <action id="4" name="Set animation" sid="8126244398526196" type="spr_PlayerAnimations">
+                    <param id="0" name="Animation">&quot;Stand&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="2985124226282545" type="spr_Bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="8825124212680946">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="8508796462387352" type="spr_Player">
+                    <param id="0" name="Object">inv_robot</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-3" name="Set position" sid="3126852928500361" type="spr_Player">
+                    <param id="0" name="X">1049</param>
+                    <param id="1" name="Y">1117</param>
+                </action>
+                <action disabled="1" id="-3" name="Set position" sid="1525208596782348" type="inv_robot">
+                    <param id="0" name="X">1503</param>
+                    <param id="1" name="Y">956</param>
+                </action>
+                <action id="4" name="Set animation" sid="3222448856294121" type="spr_PlayerAnimations">
+                    <param id="0" name="Animation">&quot;Stand&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="8672807256891718" type="spr_Bullet" />
+            </actions>
+        </event-block>
+        <comment>Robot Shoot down Wall</comment>
+        <event-block sid="5282413408850419">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6839888530942616" type="spr_Bullet">
+                    <param id="0" name="Object">obj_BlockingWall</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3688640620938687" type="obj_BlockingWall" />
+                <action id="-9" name="Destroy" sid="5900629895244102" type="spr_Bullet" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

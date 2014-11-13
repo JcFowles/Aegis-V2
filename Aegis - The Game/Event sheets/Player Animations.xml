@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Player Animations</name>
+    <events>
+        <comment>Put Player back to original size when not crawling</comment>
+        <event-block sid="1334788644965292">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="6462558867283406" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bCrawling</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="2812813647441026" type="spr_Player">
+                    <param id="0" name="Animation">&quot;default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6162479847169081">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="8090219457263111" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bCrawling</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="8243644415391236" type="spr_Player">
+                    <param id="0" name="Animation">&quot;Crawl&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Movement animations</comment>
+        <event-block sid="1723935400454944">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8721045402287271" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3127248819774769" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bClimbing</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="5803101986889112">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="5311494514043835" type="spr_Player" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Idle animations</comment>
+                        <event-block sid="325622492521332">
+                            <conditions>
+                                <condition behavior="Platform" id="0" inverted="1" name="Is moving" sid="8224887025632652" type="spr_Player" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="2000054227766684" type="spr_PlayerAnimations">
+                                    <param id="0" name="Animation">&quot;Stand&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="5569573799976119" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">iNoiseEmission</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Crawling animation overwrites sneaking animation (code runs crawl last)</comment>
+                                <event-block sid="8125308056534786">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="7633406216025143" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">bSneaking</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="8384896726624265" type="spr_PlayerAnimations">
+                                            <param id="0" name="Animation">&quot;Sneak_Still&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="7617841562223883">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="8165907884276495" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">bCrawling</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="1276082293578639" type="spr_PlayerAnimations">
+                                            <param id="0" name="Animation">&quot;Crawl_Still&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Moving animations</comment>
+                        <event-block sid="7294414773182432">
+                            <conditions>
+                                <condition behavior="Platform" id="0" name="Is moving" sid="8815831600720803" type="spr_Player" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="8306872411058739" type="spr_PlayerAnimations">
+                                    <param id="0" name="Animation">&quot;Run&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action behavior="Platform" id="1" name="Set max speed" sid="147773061057199" type="spr_Player">
+                                    <param id="0" name="Max Speed">600</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="3857309008798649" type="spr_PlayerAnimations">
+                                    <param id="0" name="Instance variable">iNoiseEmission</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Crawling animation overwrites sneaking animation (code runs crawl last)</comment>
+                                <event-block sid="1909042299405146">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="1212537653536375" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">bSneaking</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="450385498964621" type="spr_PlayerAnimations">
+                                            <param id="0" name="Animation">&quot;Sneak&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="4761616786034868" type="spr_Player">
+                                            <param id="0" name="Max Speed">200</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="6293504482897396" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">iNoiseEmission</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="968881761380423">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="3738296713856667" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">bCrawling</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="3393352312412224" type="spr_PlayerAnimations">
+                                            <param id="0" name="Animation">&quot;Crawl&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="7582807273647774" type="spr_Player">
+                                            <param id="0" name="Max Speed">200</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="1418621055448882" type="spr_PlayerAnimations">
+                                            <param id="0" name="Instance variable">iNoiseEmission</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Jumping animation</comment>
+                <event-block sid="4126589979992069">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="2114991470086058" type="spr_Player" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="9398851666357424" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Jump&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2582037825000934" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">iNoiseEmission</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Falling animation</comment>
+                <event-block sid="3721862964804855">
+                    <conditions>
+                        <condition behavior="Platform" id="4" name="Is falling" sid="1960932185769797" type="spr_Player" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="3794862083659133" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Fall&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2702043269656616" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">iNoiseEmission</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Latch onto a ledge</comment>
+        <event-block sid="4589139696672665">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7191202336707241" type="inv_GrabZone">
+                    <param id="0" name="Object">inv_LedgeLeft</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="2737593416660612" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="629150084885059" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bClimbing</param>
+                </condition>
+                <condition id="7" inverted="1" name="Is mirrored" sid="30027615876611" type="spr_PlayerAnimations" />
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="1885013313281172" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="1594362086565805" type="spr_Player">
+                    <param id="0" name="X">inv_LedgeLeft.X - 41</param>
+                    <param id="1" name="Y">inv_LedgeLeft.Y + 112</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4098742252170136">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="8011972263193163" type="inv_GrabZone">
+                    <param id="0" name="Object">inv_LedgeRight</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1876692658744294" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1405086801695273" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bClimbing</param>
+                </condition>
+                <condition id="7" name="Is mirrored" sid="5745100844186785" type="spr_PlayerAnimations" />
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="6230397127213423" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="9759887553313245" type="spr_Player">
+                    <param id="0" name="X">inv_LedgeRight.X + 41</param>
+                    <param id="1" name="Y">inv_LedgeRight.Y + 112</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Hang</comment>
+        <event-block sid="3071336635903271">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="5753470067585195" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bHanging</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="4475609695886773" type="spr_PlayerAnimations">
+                    <param id="0" name="Animation">&quot;Hang&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-10" name="Set value" sid="6356354873994304" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">iNoiseEmission</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Climb</comment>
+        <event-block sid="2192293240429977">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="6590073408742792" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bClimbing</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="8004796813404232" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7129575745028797">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Is mirrored" sid="474273470125205" type="spr_PlayerAnimations" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="2310671258248226" type="spr_Player">
+                            <param id="0" name="X">inv_LedgeLeft.X</param>
+                            <param id="1" name="Y">inv_LedgeLeft.Y - 5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2518249780176598">
+                    <conditions>
+                        <condition id="7" name="Is mirrored" sid="873977724497085" type="spr_PlayerAnimations" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="7018292837684766" type="spr_Player">
+                            <param id="0" name="X">inv_LedgeRight.X</param>
+                            <param id="1" name="Y">inv_LedgeRight.Y - 5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="93567337084165">
+                    <conditions />
+                    <actions>
+                        <action id="4" name="Set animation" sid="7605656162698577" type="spr_PlayerAnimations">
+                            <param id="0" name="Animation">&quot;Climb&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2219557326203715" type="spr_PlayerAnimations">
+                            <param id="0" name="Instance variable">iNoiseEmission</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Finished climbing</comment>
+        <event-block sid="2021363021284689">
+            <conditions>
+                <condition id="4" name="On finished" sid="9432033701792856" type="spr_PlayerAnimations">
+                    <param id="0" name="Animation">&quot;Climb&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="9242935935764406" type="spr_Player">
+                    <param id="0" name="X">inv_LedgeLeft.X + 42</param>
+                    <param id="1" name="Y">inv_LedgeLeft.Y - (spr_Player.Height / 2)</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="8561095319016819" type="spr_PlayerAnimations">
+                    <param id="0" name="Instance variable">bClimbing</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
